@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "VT323", monospace;
+}
+
+.biohazard-header {
+    z-index: 10;
+    cursor: pointer;
+    height: 60px;
+    padding: 0 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(
+        45deg,
+        #f2d94b 0 42px,
+        #000 42px 84px,
+        #f2d94b 84px 120px
+    );
+    background-size: 120px;
+    color: #0b0b0b;
+    font-size: 18px;
+    box-shadow: 3px 5px 15px 0 rgba(242, 217, 75, 0.8);
+    transform-origin: 5px calc(100% - 5px);
+    animation: bg linear 10s infinite;
+}
+.biohazard-header .header-container {
+    background: #f2d94b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(100% - 20px);
+    margin: 10px 0;
+    padding: 0 20px;
+    border-radius: 3px;
+}
+.biohazard-header .header-container .left {
+    display: flex;
+    align-items: center;
+}
+.biohazard-header .pin {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #954535;
+    left: 5px;
+    bottom: 5px;
+}
+.biohazard-header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.biohazard-header.warning {
+    animation: drop 2s forwards;
+}
+
+@keyframes bg {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 100%;
+    }
+}
+@keyframes drop {
+    0% {
+        transform: rotate(0deg);
+        animation-timing-function: cubic-bezier(1, 0.02, 0.91, 0.42);
+    }
+    30% {
+        box-shadow: 0 0 15px 0 rgba(242, 217, 75, 0.8);
+        transform: rotate(90deg);
+        animation-timing-function: cubic-bezier(0.15, 0.75, 0.75, 0.15);
+    }
+    37.5% {
+        transform: rotate(82deg);
+        animation-timing-function: cubic-bezier(1, 0.02, 0.91, 0.42);
+    }
+    45% {
+        transform: rotate(90deg);
+        animation-timing-function: cubic-bezier(0.15, 0.75, 0.75, 0.15);
+    }
+    47.5% {
+        transform: rotate(86deg);
+        animation-timing-function: cubic-bezier(1, 0.02, 0.91, 0.42);
+    }
+    50% {
+        transform: rotate(90deg);
+        animation-timing-function: cubic-bezier(1, 0, 0.9, 0.6);
+    }
+    100% {
+        transform: rotate(90deg) translateX(100%);
+        visibility: hidden;
+    }
+}
+.content {
+    position: relative;
+    padding: 30px;
+    padding-top: 90px;
+    font-size: 20px;
+    height: 100vh;
+    background: #0b0b0b;
+    color: #f2d94b;
+    text-shadow: 1px 1px 5px rgba(242, 217, 75, 0.6);
+    transition: all 0.5s;
+    transition-delay: 1.5s;
+    box-sizing: border-box;
+}
+.content p {
+    position: relative;
+}
+.content.warning {
+    color: #d2322d;
+    text-shadow: 1px 1px 5px rgba(210, 50, 45, 0.6);
+    animation: warning 1s ease-in 2s alternate infinite;
+}
+
+@keyframes warning {
+    0% {
+        color: #d2322d;
+        text-shadow: 1px 1px 5px rgba(210, 50, 45, 0.6);
+    }
+    100% {
+        color: transparent;
+        text-shadow: none;
+    }
+}
+.leak {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    background: #000;
+    color: #d2322d;
+    text-align: center;
+    border: 8px solid #d2322d;
+    text-transform: uppercase;
+    border-radius: 6px;
+    transition: all 0.5s;
+    transition-delay: 1.5s;
+}
+.leak.warning {
+    opacity: 1;
+    visibility: visible;
+}
